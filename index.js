@@ -11,40 +11,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const saveBooksToStorage = () => {
     localStorage.setItem('books', JSON.stringify(booksCollection));
   };
-  const bookList = document.querySelector('.booklist');
-  const titleInput = document.querySelector('#title');
-  const authorInput = document.querySelector('#author');
+  const table = document.querySelector('#table');
   const addButton = document.querySelector('.add-button');
 
   const displayBooks = () => {
-    bookList.innerHTML = '';
-    booksCollection.forEach((book) => {
-      const bookElement = document.createElement('div');
-      bookElement.className = 'dynamic-list';
-      bookElement.innerHTML = `
-        <p>${book.title}</p>
-        <p>By</p>
-        <h2>${book.author}</h2>
-        <button class="remove-book" data-title="${book.title}">Remove</button>
+    const tbody = document.createElement('tbody');
+    booksCollection.forEach((book, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td><button class="remove-book" data-index="${index}">Remove</button></td>
       `;
-      bookList.appendChild(bookElement);
+      tbody.appendChild(row);
     });
-    const removeBook = (title) => {
-      booksCollection = booksCollection.filter((book) => book.title !== title);
+    table.innerHTML = '';
+    table.appendChild(tbody);
+    const removeBook = (index) => {
+      booksCollection.splice(index, 1);
       displayBooks();
       saveBooksToStorage();
     };
     const removeButtons = document.querySelectorAll('.remove-book');
     removeButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        const title = button.getAttribute('data-title');
-        removeBook(title);
+        const index = button.getAttribute('data-index');
+        removeBook(index);
       });
     });
   };
 
   const addBook = (event) => {
     event.preventDefault();
+    const titleInput = document.querySelector('#title');
+    const authorInput = document.querySelector('#author');
     const title = titleInput.value;
     const author = authorInput.value;
     const newBook = {
@@ -57,8 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     displayBooks();
     saveBooksToStorage();
   };
-
-  displayBooks();
 
   addButton.addEventListener('click', addBook);
 });
