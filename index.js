@@ -33,9 +33,11 @@ class BookCollection {
       const bookElement = document.createElement('div');
       bookElement.className = 'dynamic-list';
       bookElement.innerHTML = `
-        <p>"${book.title}"</p>
-        <p>by</p>
-        <h2>${book.author}</h2>
+        <span class="books-container">
+          <p>"${book.title}"</p>
+          <p class="para-by">by</p>
+          <h2>${book.author}</h2>
+        </span>
         <button class="remove-book" data-title="${book.title}">Remove</button>
       `;
       bookList.appendChild(bookElement);
