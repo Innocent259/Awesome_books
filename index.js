@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   let booksCollection = [];
+
+  const loadBooksFromStorage = () => {
+    const storedBooks = localStorage.getItem('books');
+    if (storedBooks) {
+      booksCollection = JSON.parse(storedBooks);
+    }
+  };
+  loadBooksFromStorage();
+  const saveBooksToStorage = () => {
+    localStorage.setItem('books', JSON.stringify(booksCollection));
+  };
   const bookList = document.querySelector('.booklist');
   const titleInput = document.querySelector('#title');
   const authorInput = document.querySelector('#author');
@@ -9,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bookList.innerHTML = '';
     booksCollection.forEach((book) => {
       const bookElement = document.createElement('div');
+      bookElement.className = 'dynamic-list';
       bookElement.innerHTML = `
         <p>${book.title}</p>
         <p>By</p>
@@ -17,11 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       bookList.appendChild(bookElement);
     });
+    const removeBook = (title) => {
+      booksCollection = booksCollection.filter((book) => book.title !== title);
+      displayBooks();
+      saveBooksToStorage();
+    };
     const removeButtons = document.querySelectorAll('.remove-book');
     removeButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const title = button.getAttribute('data-title');
-        // eslint-disable-next-line no-use-before-define
         removeBook(title);
       });
     });
@@ -39,12 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     titleInput.value = '';
     authorInput.value = '';
     displayBooks();
+    saveBooksToStorage();
   };
 
-  const removeBook = (title) => {
-    booksCollection = booksCollection.filter((book) => book.title !== title);
-    displayBooks();
-  };
+  displayBooks();
 
   addButton.addEventListener('click', addBook);
 });

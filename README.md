@@ -80,7 +80,6 @@ git clone https://github.com/Innocent259/Awesome_books
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ add more pages ] 
 - [ add styling ]
 - [ add coding playground to it where where visitors can interact with ]
 
