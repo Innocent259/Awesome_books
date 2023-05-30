@@ -1,0 +1,15 @@
+body {
+  padding: 0;
+  margin-left: 5rem;
+}
+
+input {
+  height: 2rem;
+  outline: none;
+}
+
+.dynamic-list {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
