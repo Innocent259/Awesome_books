@@ -31,7 +31,7 @@ class BookCollection {
 
     this.booksCollection.forEach((book, index) => {
       const bookElement = document.createElement('div');
-      bookElement.className = 'dynamic-list';
+      bookElement.className = index % 2 === 0 ? 'even dynamic-list' : 'odd dynamic-list';
       bookElement.innerHTML = `
         <span class="books-container">
           <p>"${book.title}"</p>
