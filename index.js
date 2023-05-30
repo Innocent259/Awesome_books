@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     removeButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const title = button.getAttribute('data-title');
+        // eslint-disable-next-line no-use-before-define
         removeBook(title);
       });
     });
