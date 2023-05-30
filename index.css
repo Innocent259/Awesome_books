@@ -62,7 +62,7 @@ input {
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: .5rem;
   border: 2px solid #000;
 }
 

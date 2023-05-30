@@ -29,7 +29,7 @@ class BookCollection {
     const bookList = document.querySelector('.booklist');
     bookList.innerHTML = '';
 
-    this.booksCollection.forEach((book) => {
+    this.booksCollection.forEach((book, index) => {
       const bookElement = document.createElement('div');
       bookElement.className = 'dynamic-list';
       bookElement.innerHTML = `
@@ -38,7 +38,7 @@ class BookCollection {
           <p class="para-by">by</p>
           <h2>${book.author}</h2>
         </span>
-        <button class="remove-book" data-title="${book.title}">Remove</button>
+        <button class="remove-book" data-index="${index}">Remove</button>
       `;
       bookList.appendChild(bookElement);
     });
@@ -46,8 +46,8 @@ class BookCollection {
     const removeButtons = document.querySelectorAll('.remove-book');
     removeButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        const title = button.getAttribute('data-title');
-        this.removeBook(title);
+        const index = parseInt(button.getAttribute('data-index'), 10);
+        this.removeBook(index);
       });
     });
   }
@@ -57,8 +57,13 @@ class BookCollection {
 
     const titleInput = document.querySelector('#title');
     const authorInput = document.querySelector('#author');
-    const title = titleInput.value;
-    const author = authorInput.value;
+    const title = titleInput.value.trim();
+    const author = authorInput.value.trim();
+
+    if (title === '' || author === '') {
+      return;
+    }
+
     const newBook = { title, author };
 
     this.booksCollection.push(newBook);
@@ -68,8 +73,8 @@ class BookCollection {
     this.saveBooksToStorage();
   }
 
-  removeBook(title) {
-    this.booksCollection = this.booksCollection.filter((book) => book.title !== title);
+  removeBook(index) {
+    this.booksCollection.splice(index, 1);
     this.displayBooks();
     this.saveBooksToStorage();
   }
