@@ -7,6 +7,11 @@ class BookCollection {
 
     this.addButton = document.querySelector('.add-button');
     this.addButton.addEventListener('click', this.addBook.bind(this));
+
+    this.navLinks = document.querySelectorAll('.nav-links li');
+    this.navLinks.forEach((link) => {
+      link.addEventListener('click', this.handleNavLinkClick.bind(this));
+    });
   }
 
   static initialize() {
@@ -77,6 +82,20 @@ class BookCollection {
     this.booksCollection.splice(index, 1);
     this.displayBooks();
     this.saveBooksToStorage();
+  }
+
+  handleNavLinkClick(event) {
+    event.preventDefault();
+    const { target } = event;
+    const linkText = target.textContent.toLowerCase();
+
+    if (linkText === 'list') {
+      this.displayBooks();
+    } else if (linkText === 'add new') {
+    
+      const bookList = document.querySelector('.booklist');
+      bookList.innerHTML = '';
+    }
   }
 }
 
