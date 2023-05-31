@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,29 +9,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Awesome Books</title>
-</head>
-<body class="container">
+  </head>
+  <body class="container">
     <nav class="navbar">
-        <h1 class="nav-title">Awesome Books</h1>
-        <ul class="nav-links">
-            <li><a href="#">List</a></li>
-            <li><a href="#">Add new</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+      <h1 class="nav-title">Awesome Books</h1>
+      <ul>
+        <li id="list-link">List</li>
+        <li id="add-link">Add New Book</li>
+        <li id="contact-link">Contact</li>
+      </ul>
     </nav>
-    <div class="time"></div>
-    <h1>All Awesome Books</h1>
-    <div class="booklist"></div>
-    <hr>
-    <h2>Add New Book</h2>
-    <form id="form">
+    <div id="add-section">
+      <h2>Add New Book</h2>
+      <form id="form">
         <input type="text" id="title" placeholder="Title">
         <input type="text" id="author" placeholder="Author">
         <button class="add-button" type="submit">Add</button>
-    </form>
+      </form>
+    </div>
+    <div id="list-section" class="hidden-section">
+      <h1>All Awesome Books</h1>
+      <div class="booklist">
+      </div>
+      <hr>
+    </div>
+    <div id="contact-section" class="hidden-section">
+      <h2>Contact Us</h2>
+      <p>Feel free to reach out to us for any inquiries or feedback.</p>
+     <li>Our e-mail: mail@mail.com</li>
+      <li>Our phone number: 0043586534422</li>
+     <li>Our address: Streetname 22, 84503 City, Country</li>
+    
+    </div>
     <footer>
-        <p>Copyright</p>
+        <p>&copy2023 Celyne and Innocent</p>
     </footer>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
