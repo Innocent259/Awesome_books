@@ -91,6 +91,7 @@ input {
   background-color: rgb(220, 218, 218);
   color: #000;
 }
+
 .remove-book {
   padding: 8px;
   box-shadow: 3px 3px rgba(1, 8, 0, 0.3);
@@ -139,7 +140,7 @@ input {
   bottom: 0;
 }
 
-.copyright{
+.copyright {
   font-size: 1rem;
   font-weight: 600;
 }
