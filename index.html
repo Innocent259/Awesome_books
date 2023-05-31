@@ -11,14 +11,16 @@
     <title>Awesome Books</title>
   </head>
   <body class="container">
-    <nav class="navbar">
+    <header class="header">
+      <nav class="navbar"> 
       <h1 class="nav-title">Awesome Books</h1>
-      <ul>
-        <li id="list-link">List</li>
-        <li id="add-link">Add New Book</li>
-        <li id="contact-link">Contact</li>
+      <ul class="nav-list">
+        <li id="list-link"><a href="#" class="list">List</a></li>
+        <li id="add-link"><a href="#" class="list">Add New Book</a></li>
+        <li id="contact-link"><a href="#" class="list">Contact</a></li>
       </ul>
     </nav>
+    </header> 
     <div id="add-section">
       <h2>Add New Book</h2>
       <form id="form">
@@ -36,12 +38,11 @@
     <div id="contact-section" class="hidden-section">
       <h2>Contact Us</h2>
       <p>Feel free to reach out to us for any inquiries or feedback.</p>
-     <li>Our e-mail: mail@mail.com</li>
-      <li>Our phone number: 0043586534422</li>
-     <li>Our address: Streetname 22, 84503 City, Country</li>
-    
+      <p>Our e-mail: mail@mail.com</p>
+      <p>Our phone number: 0043586534422</p>
+      <p>Our address: Streetname 22, 84503 City, Country</p> 
     </div>
-    <footer>
+    <footer class="footer">
         <p>&copy2023 Celyne and Innocent</p>
     </footer>
     <script src="index.js"></script>
