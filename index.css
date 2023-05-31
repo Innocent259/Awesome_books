@@ -5,13 +5,48 @@
 }
 
 .container {
-  width: 80%;
+  width: 100%;
   margin: auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 3rem;
   font-family: 'Poppins', sans-serif;
+  background-color: rgb(220, 218, 218);
+}
+
+.header {
+  border: 2px solid rgb(19, 19, 90);
+  margin-block: auto;
+}
+
+.navbar {
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1rem;
+}
+
+.list {
+  color: rgb(1, 1, 64);
+  text-decoration: none;
+  font-size: larger;
+}
+
+.list:focus {
+  color: rgb(250, 0, 0);
+  text-decoration: underline;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1rem;
+}
+
+li {
+  list-style: none;
+  cursor: pointer;
 }
 
 button {
@@ -23,7 +58,7 @@ hr {
   width: 8rem;
   margin: auto;
   border: none;
-  border-top: 3px solid #000;
+  border-top: 2px solid #000;
 }
 
 #form {
@@ -43,11 +78,18 @@ input {
 
 .add-button {
   padding: 8px;
-  box-shadow: 3px 3px 5px rgba(2, 14, 1, 0.3);
+  box-shadow: 3px 3px 5px rgba(19, 19, 90, 0.3);
+  background-color: rgb(26, 26, 192);
   width: 25%;
   font-weight: bold;
   align-self: flex-end;
-  border-radius: 5px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.add-button:hover {
+  background-color: rgb(220, 218, 218);
+  color: #000;
 }
 
 .remove-book {
@@ -77,11 +119,28 @@ input {
 }
 
 .even {
-  background-color: #ddd;
+  background-color: rgba(159, 197, 159, 0.5);
 }
 
 .books-container {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.hidden-section {
+  display: none;
+}
+
+.footer {
+  padding: 20px;
+  border: 2px solid #000;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.copyright {
+  font-size: 1rem;
+  font-weight: 600;
 }

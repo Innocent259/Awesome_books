@@ -5,7 +5,18 @@ class BookCollection {
     this.loadBooksFromStorage();
     this.displayBooks();
 
+    this.addLink = document.getElementById('add-link');
+    this.listLink = document.getElementById('list-link');
+    this.contactLink = document.getElementById('contact-link');
+    this.addSection = document.getElementById('add-section');
+    this.listSection = document.getElementById('list-section');
+    this.contactSection = document.getElementById('contact-section');
+    this.form = document.getElementById('form');
     this.addButton = document.querySelector('.add-button');
+
+    this.addLink.addEventListener('click', this.showAddSection.bind(this));
+    this.listLink.addEventListener('click', this.showListSection.bind(this));
+    this.contactLink.addEventListener('click', this.showContactSection.bind(this));
     this.addButton.addEventListener('click', this.addBook.bind(this));
   }
 
@@ -77,6 +88,24 @@ class BookCollection {
     this.booksCollection.splice(index, 1);
     this.displayBooks();
     this.saveBooksToStorage();
+  }
+
+  showAddSection() {
+    this.addSection.style.display = 'block';
+    this.listSection.style.display = 'none';
+    this.contactSection.style.display = 'none';
+  }
+
+  showListSection() {
+    this.addSection.style.display = 'none';
+    this.listSection.style.display = 'block';
+    this.contactSection.style.display = 'none';
+  }
+
+  showContactSection() {
+    this.addSection.style.display = 'none';
+    this.listSection.style.display = 'none';
+    this.contactSection.style.display = 'block';
   }
 }
 
