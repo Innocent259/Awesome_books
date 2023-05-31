@@ -11,7 +11,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  
+- [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -47,6 +47,13 @@
 - **[use html for the design ]**
 - **[use css for the styling ]**
 - **[use javascript for design and functionality]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo](https://innocent259.github.io/Awesome_books/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -72,7 +79,8 @@ git clone https://github.com/Innocent259/Awesome_books
 👤 **EVELYNE CELYNE BIRUNGI**
  
 - GitHub: [@CELYNEBIRUNGI](https://github.com/CELYNEBIRUNGI)
-👤 **EVELYNE CELYNE BIRUNGI**
+
+👤 **Innocent Ndahimana**
  
 - GitHub: [@Innocent259](https://github.com/Innocent259)
 

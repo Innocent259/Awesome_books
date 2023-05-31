@@ -1,64 +1,85 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let booksCollection = [];
+class BookCollection {
+  constructor() {
+    this.booksCollection = [];
 
-  const loadBooksFromStorage = () => {
+    this.loadBooksFromStorage();
+    this.displayBooks();
+
+    this.addButton = document.querySelector('.add-button');
+    this.addButton.addEventListener('click', this.addBook.bind(this));
+  }
+
+  static initialize() {
+    const bookCollection = new BookCollection();
+    return bookCollection;
+  }
+
+  loadBooksFromStorage() {
     const storedBooks = localStorage.getItem('books');
     if (storedBooks) {
-      booksCollection = JSON.parse(storedBooks);
+      this.booksCollection = JSON.parse(storedBooks);
     }
-  };
-  loadBooksFromStorage();
-  const saveBooksToStorage = () => {
-    localStorage.setItem('books', JSON.stringify(booksCollection));
-  };
-  const bookList = document.querySelector('.booklist');
-  const titleInput = document.querySelector('#title');
-  const authorInput = document.querySelector('#author');
-  const addButton = document.querySelector('.add-button');
+  }
 
-  const displayBooks = () => {
+  saveBooksToStorage() {
+    localStorage.setItem('books', JSON.stringify(this.booksCollection));
+  }
+
+  displayBooks() {
+    const bookList = document.querySelector('.booklist');
     bookList.innerHTML = '';
-    booksCollection.forEach((book) => {
+
+    this.booksCollection.forEach((book, index) => {
       const bookElement = document.createElement('div');
-      bookElement.className = 'dynamic-list';
+      bookElement.className = index % 2 === 0 ? 'even dynamic-list' : 'odd dynamic-list';
       bookElement.innerHTML = `
-        <p>${book.title}</p>
-        <p>By</p>
-        <h2>${book.author}</h2>
-        <button class="remove-book" data-title="${book.title}">Remove</button>
+        <span class="books-container">
+          <p>"${book.title}"</p>
+          <p class="para-by">by</p>
+          <h2>${book.author}</h2>
+        </span>
+        <button class="remove-book" data-index="${index}">Remove</button>
       `;
       bookList.appendChild(bookElement);
     });
-    const removeBook = (title) => {
-      booksCollection = booksCollection.filter((book) => book.title !== title);
-      displayBooks();
-      saveBooksToStorage();
-    };
+
     const removeButtons = document.querySelectorAll('.remove-book');
     removeButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        const title = button.getAttribute('data-title');
-        removeBook(title);
+        const index = parseInt(button.getAttribute('data-index'), 10);
+        this.removeBook(index);
       });
     });
-  };
+  }
 
-  const addBook = (event) => {
+  addBook(event) {
     event.preventDefault();
-    const title = titleInput.value;
-    const author = authorInput.value;
-    const newBook = {
-      title,
-      author,
-    };
-    booksCollection.push(newBook);
+
+    const titleInput = document.querySelector('#title');
+    const authorInput = document.querySelector('#author');
+    const title = titleInput.value.trim();
+    const author = authorInput.value.trim();
+
+    if (title === '' || author === '') {
+      return;
+    }
+
+    const newBook = { title, author };
+
+    this.booksCollection.push(newBook);
     titleInput.value = '';
     authorInput.value = '';
-    displayBooks();
-    saveBooksToStorage();
-  };
+    this.displayBooks();
+    this.saveBooksToStorage();
+  }
 
-  displayBooks();
+  removeBook(index) {
+    this.booksCollection.splice(index, 1);
+    this.displayBooks();
+    this.saveBooksToStorage();
+  }
+}
 
-  addButton.addEventListener('click', addBook);
+document.addEventListener('DOMContentLoaded', () => {
+  BookCollection.initialize();
 });
